@@ -1,0 +1,72 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aviary-mdo"
+version = "0.1.0"
+description = "Multidisciplinary Design Optimization modules for NASA Aviary — missile design, aerothermodynamics, 6-DOF flight simulation, guidance, DATCOM, and community aircraft."
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.9"
+authors = [
+    {name = "MDO Research Team"},
+]
+keywords = ["mdo", "aviary", "missile", "aerothermodynamics", "guidance", "datcom", "npss", "pycycle", "openmdao"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering :: Physics",
+    "Topic :: Scientific/Engineering :: Atmospheric Science",
+]
+
+dependencies = [
+    "numpy",
+    "scipy",
+    "openmdao>=3.30",
+]
+
+[project.optional-dependencies]
+aviary = ["aviary"]
+rocketpy = ["rocketpy>=1.0"]
+jsbsim = ["jsbsim"]
+pycycle = ["om-pycycle>=4.0"]
+all = [
+    "aviary",
+    "rocketpy>=1.0",
+    "jsbsim",
+    "om-pycycle>=4.0",
+]
+test = [
+    "pytest>=7.0",
+    "aviary",
+    "rocketpy>=1.0",
+    "jsbsim",
+    "om-pycycle>=4.0",
+]
+
+[project.urls]
+Repository = "https://github.com/YOUR_USERNAME/aviary-mdo"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"aviary_mdo.engine_npss.NPSS_Model" = ["*.run", "*.mdl", "*.fnc", "*.case_Aviary*"]
+"aviary_mdo.engine_npss.NPSS_Model.Design_files" = ["*.int"]
+"aviary_mdo.engine_npss.NPSS_Model.Maps_and_Elements" = ["*.map", "*.int", "*.view*"]
+"aviary_mdo.engine_npss.NPSS_Model.Output" = ["*.outputAviary", "*.viewOut"]
+"aviary_mdo.examples.aircraft" = ["**/*.csv", "**/*.deck", "**/*.py", "**/*.txt"]
+
+[tool.pytest.ini_options]
+testpaths = [
+    "src/aviary_mdo/missile/test",
+    "src/aviary_mdo/aerothermodynamics/test",
+    "src/aviary_mdo/missile_6dof/test",
+    "src/aviary_mdo/missile_guidance/test",
+    "src/aviary_mdo/datcom/test",
+    "src/aviary_mdo/engine_npss/test",
+    "src/aviary_mdo/engine_pycycle/test",
+]
