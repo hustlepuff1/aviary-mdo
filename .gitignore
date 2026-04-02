@@ -1,3 +1,4 @@
+# Python
 __pycache__/
 *.py[cod]
 *$py.class
@@ -5,7 +6,40 @@ __pycache__/
 dist/
 build/
 *.egg
+.eggs/
+
+# Testing
 .pytest_cache/
+
+# OpenMDAO output directories
 __main__*_out/
-*.csv
+*_out/
+*.openmdao_out/
 .openmdao_out/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+*.env
+.venv/
+venv/
+
+# Claude Code / AI tooling
+CLAUDE.md
+.claude/
+.claude-flow/
+.mcp.json
+
+# Temporary data (OpenMDAO output CSVs at repo root)
+/BallOut.csv
+/*.csv
